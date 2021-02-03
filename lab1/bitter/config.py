@@ -9,4 +9,4 @@ class Config(object):
     SECRET_KEY = os.getenv('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = os.getenv('DB_STRING')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # SERVER_NAME = 'localhost:6000'
+    FILTER = True

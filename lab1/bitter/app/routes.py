@@ -12,6 +12,7 @@ ADMIN = 'admin'
 
 @app.route('/')
 def index():
+
     posts = get_posts(request.args.get('filter'))
     return render_template(
         'index.html', 
@@ -76,13 +77,8 @@ def comment():
     if not session.get('username'):
         return Response(status=401)
 
-    raw_data = request.json
-    data = {
-        'body': raw_data['body'],
-        'user_id': get_user_id(session['username']),
-        'post_id': raw_data['post_id']
-    }
-    status = create_comment(data)
+    user_id = get_user_id(session['username'])
+    status = create_comment(request.json, user_id)
 
     if status['status']:
         return Response(status=200)
