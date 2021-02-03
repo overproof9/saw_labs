@@ -4,6 +4,7 @@ from app import app
 
 
 class Validator:
+    # toggle data filtering if True filter is ON
     filter = app.config.get('FILTER', True)
     
     @classmethod
@@ -15,7 +16,7 @@ class Validator:
         expr = r'[\\,\-,\',\*,\.,\,,\%]'
         try:
             result = re.sub(expr, '', value)
-            result = result.strip(' \t\n\r')
+            result = result.strip('')
         except TypeError:
             result = value
         return result
