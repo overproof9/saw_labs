@@ -57,14 +57,16 @@ def login_user(form):
         return {'status': False, 'errors': errors}
 
     query = f'SELECT username, passwd FROM {TABLES["user"]} WHERE username = \'{form.username.data}\';'
+    print(query)
     result = db.session.execute(query).fetchall()
+    print(result)
     if len(result) != 1:
         return {'status': False, 'errors': ['User not found']}
     user = result[0]
     if not check_password_hash(user[1], form.password.data):
          return {'status': False, 'errors': ['User not found']}
 
-    return {'status': True}
+    return {'status': True, 'user': user}
 
 
 def create_post(form, username):

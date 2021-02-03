@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user_is_admin %}
+    <div class="container-md text-success">
+        <h1>Welcome to admin dashboard</h1>
+    </div>
+    {% else %}
+    <div class="container-md text-warning">
+        <h1>File not found 404</h1>
+    </div>
+    {% endif %}
+{% endblock %}

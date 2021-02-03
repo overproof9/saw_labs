@@ -1,4 +1,3 @@
-from re import error
 from flask import render_template, request, redirect, session, Response
 from flask.helpers import url_for
 
@@ -7,10 +6,19 @@ from app.forms import LoginForm, RegisterForm, PostForm
 from app.utils import (get_user_id, register_user, login_user, create_post, 
                        get_posts, get_post, create_comment, get_comments)
 
+
+ADMIN = 'admin'
+
+
 @app.route('/')
 def index():
     posts = get_posts(request.args.get('filter'))
-    return render_template('index.html', username=session.get('username'), posts=posts)
+    return render_template(
+        'index.html', 
+        username=session.get('username'), 
+        user_is_admin=session.get('user_is_admin'),
+        posts=posts
+    )
 
 
 @app.route('/create_post', methods=['GET', 'POST'])
@@ -34,7 +42,8 @@ def login():
     if request.method == 'POST':
         login = login_user(form)
         if login['status']:
-            session['username'] = request.form['username']
+            session['username'] = login['user'][0]
+            session['user_is_admin'] = session['username'] == ADMIN
             return redirect(url_for('index'))
         else:
             errors = login['errors']
@@ -58,6 +67,7 @@ def register():
 def logout():
     if session.get('username'):
         session.pop('username')
+        session['user_is_admin'] = None
     return redirect(url_for('index'))
 
 @app.route('/post/comment', methods=['POST'])
@@ -86,3 +96,12 @@ def post_detail(id):
         return Response(status=404)
     comments = get_comments(id)
     return render_template('post.html', username=session.get('username'), post=post, comments=comments)
+
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    return render_template(
+        'admin.html',
+        username=session.get('username'),
+        user_is_admin=session.get('user_is_admin'),
+    )
