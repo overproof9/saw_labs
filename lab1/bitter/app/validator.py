@@ -11,14 +11,14 @@ class Validator:
         return {key: value.data for key, value in form._fields.items()}
     
     @classmethod
-    def substitute_special(cls, string):
+    def substitute_special(cls, value):
         expr = r'[\\,\-,\',\*,\.,\,,\%]'
         try:
-            result = re.sub(expr, '', string)
+            result = re.sub(expr, '', value)
+            result = result.strip(' \t\n\r')
         except TypeError:
-            result = string
+            result = value
         return result
-
 
     @classmethod
     def validate_form(cls, form):
