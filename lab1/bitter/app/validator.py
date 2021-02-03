@@ -16,7 +16,7 @@ class Validator:
         expr = r'[\\,\-,\',\*,\.,\,,\%]'
         try:
             result = re.sub(expr, '', value)
-            result = result.strip('')
+            result = result.strip()
         except TypeError:
             result = value
         return result
