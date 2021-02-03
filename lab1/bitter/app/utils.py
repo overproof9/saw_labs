@@ -39,7 +39,6 @@ def register_user(form):
     if errors:
         return {'status': False, 'errors': errors}
 
-    id = get_new_id('user')
     password = generate_password_hash(form.password1.data)
     query = """INSERT INTO public."user" (username, email, password) VALUES """
     tail = f' (\'{form.username.data}\', \'{form.email.data}\', \'{password}\');'
@@ -77,9 +76,8 @@ def create_post(form, username):
     if errors:
         return {'status': False, 'errors': errors}
     
-    id = get_new_id('post')
     user_id = get_user_id(username)
-    query = """INSERT INTO public."post" VALUES (title, body, pub_date, user_id) """ 
+    query = """INSERT INTO public."post" (title, body, pub_date, user_id) VALUES """ 
     tail = f' (\'{form.title.data}\', \'{form.body.data}\', \'{datetime.now()}\', {user_id});'
     query += tail
     db.engine.execute(query)
@@ -91,7 +89,7 @@ def get_posts(filters=None):
                INNER JOIN public."user" AS u ON (p.user_id = u.id)"""
     tail = ''
     if filters:
-        tail = f" WHERE u.username LIKE \'%{filters}%\' OR p.title LIKE \'%{filters}%\';"
+        tail = f" WHERE u.username LIKE \'%{filters}%\' OR p.title LIKE \'%{filters}%\'"
     order = ' ORDER BY (p.id) DESC;'
     query += tail + order
     result = db.session.execute(query).fetchall()
@@ -144,9 +142,9 @@ def get_comments(post_id, limit=None):
     INNER JOIN public."user" AS u ON (c.user_id = u.id)
     """
     tail = f'WHERE p.id = \'{post_id}\''
-    limit = f' LIMIT \'{limit}\';' if limit else ''
-    order = ' ORDER BY (c.id) DESC;'
-    query += tail + limit + order
+    limit = f' LIMIT \'{limit}\';' if limit else ';'
+    order = ' ORDER BY (c.id) DESC'
+    query += tail  + order + limit
     result = db.engine.execute(query).fetchall()
     return [{
         'user_id': item[0],

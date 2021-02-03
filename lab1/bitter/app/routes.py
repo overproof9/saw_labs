@@ -9,11 +9,8 @@ from app.utils import (get_user_id, register_user, login_user, create_post,
 
 @app.route('/')
 def index():
-    username = session.get('username')
     posts = get_posts(request.args.get('filter'))
-    if username:
-        return render_template('index.html', username=username, posts=posts)
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', username=session.get('username'), posts=posts)
 
 
 @app.route('/create_post', methods=['GET', 'POST'])
