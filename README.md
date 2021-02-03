@@ -1,8 +1,17 @@
 # saw_labs
-python3 -m virtualenv env
+set up
 
-env\Scripts\activate
+create .env file in folder bitter/
 
-python3 -m pip install requirements.txt
+    SECRET_KEY=<secret>
 
-flask run
+    DB_STRING=<connection string>
+
+
+run project
+
+    python3 -m pip install -r requirements.txt
+
+    cd lab1\bitter
+
+    flask run

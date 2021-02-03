@@ -1,0 +1,5 @@
+registration injection
+	injected', 'email', 'bad')--
+
+create comment as another user
+	Injected Comment', '2021-01-01 22:00:00', 2, 1); -- '

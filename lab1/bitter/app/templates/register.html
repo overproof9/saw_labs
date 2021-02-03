@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-md text-info">
+       
+        <h1>Register</h1>
+    
+        <form action="" method="post" novalidate>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.username.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.username(size=32) }}<br>
+                </div>
+                
+            </p>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.email.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.email(size=32) }}<br>
+                </div>
+                
+            </p>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.password1.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.password1(size=32) }}<br/>
+                </div>
+                
+            </p>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.password2.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.password2(size=32) }}<br/>
+                </div>
+                
+            </p>
+            <div class="container-sm text-warning">
+                <p>{{ form.submit() }}</p><br/>
+            </div>
+            
+        </form>
+    </div>
+
+{% endblock %}

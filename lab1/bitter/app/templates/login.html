@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-md text-info">
+        <h1>Sign In</h1>
+    
+        <form action="" method="post" novalidate>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.username.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.username(size=32) }}<br>
+                </div>
+                
+            </p>
+            <p>
+                <div class="container-sm text-warning">
+                    {{ form.password.label }}<br>
+                </div>
+                <div class="container-sm text-warning">
+                    {{ form.password(size=32) }}<br/>
+                </div>
+                
+            </p>
+            <div class="container-sm text-warning">
+                <p>{{ form.submit() }}</p><br/>
+            </div>
+            
+        </form>
+    </div>
+
+{% endblock %}
