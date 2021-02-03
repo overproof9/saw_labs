@@ -14,4 +14,10 @@ run project
 
     cd lab1\bitter
 
+    flask db init
+
+    flask db migrate 'Initial migration'
+
+    flask db upgrade
+
     flask run
