@@ -16,7 +16,7 @@ run project
 
     flask db init
 
-    flask db migrate 'Initial migration'
+    flask db migrate -m 'Initial migration'
 
     flask db upgrade
 
