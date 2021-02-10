@@ -90,8 +90,11 @@ def post_detail(id):
     post = get_post(id)
     if not post:
         return Response(status=404)
-    comments = get_comments(id)
+    
+    # this code is not required since commnets are loaded by JS
+    # comments = get_comments(id)
     # return render_template('post.html', username=session.get('username'), post=post, comments=comments)
+    
     return render_template('post.html', username=session.get('username'), post=post)
 
 
