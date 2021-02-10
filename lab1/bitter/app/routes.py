@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, session, Response
+from flask import render_template, request, redirect, session, Response, jsonify
 from flask.helpers import url_for
 
 from app import app
@@ -91,7 +91,14 @@ def post_detail(id):
     if not post:
         return Response(status=404)
     comments = get_comments(id)
-    return render_template('post.html', username=session.get('username'), post=post, comments=comments)
+    # return render_template('post.html', username=session.get('username'), post=post, comments=comments)
+    return render_template('post.html', username=session.get('username'), post=post)
+
+
+@app.route('/post/post_comments/<int:id>')
+@app.route('/post_comments/<int:id>', methods=['GET'])
+def get_post_comments(id):
+    return jsonify(get_comments(id))
 
 
 @app.route('/admin', methods=['GET'])

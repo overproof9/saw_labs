@@ -164,7 +164,7 @@ def get_comments(post_id, limit=None):
     return [{
         'user_id': item[0],
         'username': item[1],
-        'body': item[2],
+        'body': Validator.validate_html(item[2]),
         'pub_date': item[3],
         'comment_id': item[4]
     } for item in result ]

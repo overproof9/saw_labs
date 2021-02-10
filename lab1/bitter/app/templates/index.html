@@ -5,12 +5,12 @@
 {% block content %}
     <div class="container-md text-info">
         {% for post in posts %}
-        <div class="card border-warning text-left bg-dark text-light mt-5">
+        <div class="card border-warning text-left bg-dark text-light mt-5 post-card" id="postid_{{ post.id }}">
             <div class="card-header">
                 <a class="nav-link text-warning" href="{{ url_for('post_detail', id=post.id) }}">{{ post.title }}</a>
                 
             </div>
-            <div class="card-body">
+            <div class="card-body post-body">
                 <p class="card-text">{{ post.body }}</p>
                 {% if username %}
                 <form class="row row-cols-lg-auto g-3 align-items-center">
@@ -28,14 +28,14 @@
             <div class="card-footer text-muted">
                 {{ post.author }} at {{ post.posted_at }}
             </div>
-            {% for comment in post.comments %}
-            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <!-- {% for comment in post.comments %} -->
+            <!-- <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                 <div class="card-header">{{ comment.username }} {{ comment.pub_date }}</div>
                 <div class="card-body">
                 <p class="card-text">{{ comment.body }}</p>
                 </div>
-            </div>
-          {% endfor %}
+            </div> -->
+          <!-- {% endfor %} -->
           </div>
         {% endfor %}
     </div>
