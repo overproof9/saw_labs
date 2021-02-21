@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#logs
-logs/*
+# logs
+lab1/logs/action_log.txt
