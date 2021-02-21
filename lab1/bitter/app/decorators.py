@@ -10,7 +10,7 @@ from app.utils import write_log
 def logging(f):
     @wraps(f)
     def inner(*args, **kwargs):
-        if request.method in ('POST', 'PUT', 'PATHC'):
+        if request.method in ('POST', 'PUT', 'PATCH'):
             payload = dict(request.form)
             if not payload:
                 payload = request.json
