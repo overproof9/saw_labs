@@ -7,6 +7,12 @@ create .env file in folder bitter/
 
     DB_STRING=<connection string>
 
+toggle input filters
+    
+    bitter/config.py > 
+        Config.FILTER = True    - enable XXS and SQL Injection protection
+        Config.FILTER = False   - disable
+
 
 run project
 
