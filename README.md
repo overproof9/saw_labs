@@ -21,3 +21,9 @@ run project
     flask db upgrade
 
     flask run
+
+logs
+
+    action logs are saved in lab1/logs/action_logs.txt
+    
+    path will be created if doesn't exist 
