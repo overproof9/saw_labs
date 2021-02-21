@@ -15,7 +15,7 @@
                       <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
                       </li>
-                      {% if username %}
+                      {% if session.username %}
                       <li class="nav-item">
                         <a class="nav-link active" href="{{ url_for('new_post') }}">Post</a>
                       </li>
@@ -30,7 +30,7 @@
                         <a class="nav-link active" href="{{ url_for('register') }}">Register</a>
                       </li>
                       {% endif %}
-                      {% if user_is_admin %}
+                      {% if session.role == 3 %}
                       <li class="nav-item">
                         <a class="nav-link active" href="{{ url_for('admin') }}">Admin panel</a>
                       </li>
@@ -69,6 +69,8 @@
           crossorigin="anonymous">
         </script>
         <script src="{{ url_for('static', filename='js/comment.js') }}"></script>
+        {% block page_scripts %}
+        {% endblock %}
     </body>
 
 </html>

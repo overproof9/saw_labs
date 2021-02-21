@@ -10,6 +10,7 @@ class User(db.Model):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     passwd = db.Column(db.String(150), nullable=False)
+    role = db.Column(db.Integer, default=1)
 
     def __init__(self, *args, **kwargs):
         super(User, self).__init__(*args, **kwargs)
@@ -50,6 +51,7 @@ class Comment(db.Model):
     user = db.relationship('User', backref=db.backref('comments', lazy=True)) 
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'), nullable=False)
     post = db.relationship('Post', backref=db.backref('comments', lazy=True))
+    active = db.Column(db.Boolean, default=True, nullable=False)
 
     def __init__(self, *args, **kwargs):
         super(Comment, self).__init__(*args, **kwargs)

@@ -1,7 +1,7 @@
 import requests
 
 url = 'http://localhost:5000/comment'
-cookies = {'session': '.eJwlzE0KgCAQQOG7zLrFTDqmXUYsR4iowJ9VdPcEtx-898JecvL1OeWGFRDT7Ii1YptiQqvVRiRMy2IJtSEmdogmwgStSPZH8SFeR09rbjLwDpf01fDvB2qjHXU.YCMJfQ._yczeh1qDiR0xj9_QEj-lF4vnU0'}
+cookies = {'session': '.eJwlzMsKgCAQQNF_mXULlcmynxEfMyChgY9V9O8Jbg_c-0JolW1_bipwgUA82WulPBlBjIaNZNRy19IE9IdTMqLQDjYYjapNzbqY00x7HbSwuExztfz7Aa-_Hp8.YC51Xw.qgIDF45i0HK43sWdK8ygMZVvjKw'}
 payload="{\r\n    \"body\": \"test session\",\r\n    \"post_id\": 5\r\n}"
 headers = {'Content-Type': 'application/json'}
 r = requests.post(url, data=payload, headers=headers, cookies=cookies)

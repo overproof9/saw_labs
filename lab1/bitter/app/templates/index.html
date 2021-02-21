@@ -12,7 +12,7 @@
             </div>
             <div class="card-body post-body">
                 <p class="card-text">{{ post.body }}</p>
-                {% if username %}
+                {% if session.username %}
                 <form class="row row-cols-lg-auto g-3 align-items-center">
                     <div class="col-12">
                       <div class="input-group">

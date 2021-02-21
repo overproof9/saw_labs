@@ -3,6 +3,11 @@
 {% block title %} {{ post.title }} {% endblock %}
 
 {% block content %}
+{% if session.role > 1 %}
+  <p>{{ session.role }}</p>
+{% else %}
+  <p>small</p>
+{% endif %}
 <div class="container-md text-info">
     <div class="card border-warning text-left bg-dark text-light mt-5 post-card" id="postid_{{ post.id }}">
         <div class="card-header">
@@ -10,7 +15,7 @@
         </div>
         <div class="card-body post-body">
             <p class="card-text">{{ post.body }}</p>
-            {% if username %}
+            {% if session.username %}
             <form class="row row-cols-lg-auto g-3 align-items-center">
                 <div class="col-12">
                   <div class="input-group">
@@ -38,3 +43,4 @@
     </div>
 </div>
 {% endblock %}
+

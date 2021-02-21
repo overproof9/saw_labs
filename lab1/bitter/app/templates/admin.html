@@ -1,13 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if user_is_admin %}
     <div class="container-md text-success">
         <h1>Welcome to admin dashboard</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.user_id }}</th>
+                    <!-- <td>{{ user.id }}</td> -->
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <select class="form-select" id="select_role_{{ user.user_id }}" aria-label="Set new role">
+                            <option disabled>Select new role</option>
+                            <option value="1">User</option>
+                            <option value="2">Moderator</option>
+                            <option value="3">Admin</option>
+                        </select>
+                        <button type="button" class="btn btn-warning role_btn" id="rol_btn_{{ user.user_id }}">Save</button>
+                    </td>
+                </tr>
+                {% endfor %}
+              
+            </tbody>
+          </table>
     </div>
-    {% else %}
-    <div class="container-md text-warning">
-        <h1>File not found 404</h1>
-    </div>
-    {% endif %}
+{% endblock %}
+{% block page_scripts %}
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 {% endblock %}

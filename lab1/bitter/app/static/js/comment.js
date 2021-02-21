@@ -12,7 +12,6 @@ $(document).ready(function(){
     });
     $('#test_form').on('submit', function(e){
         e.preventDefault();
-        console.log(e);
     })
 })
 
@@ -63,10 +62,12 @@ function load_comments(post_id){
 };
 
 function render_comment(comment, post_id){
-    let html = '<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">';
+    let html = `<div id=dbid_${comment.comment_id} class="comment_block card text-white bg-secondary mb-3" style="max-width: 18rem;">`;
     html += '<div class="card-header">' + comment.username + ' ' + comment.pub_date + '</div>';
     html += '<div class="card-body">';
     html += '<p class="card-text">' + comment.body + '</p></div></div>';
     let post_dom_id = '#postid_' + post_id;    
     $(post_dom_id).append(html);
 }
+
+
