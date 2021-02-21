@@ -10,7 +10,13 @@ from app.utils import write_log
 def logging(f):
     @wraps(f)
     def inner(*args, **kwargs):
-        payload = dict(request.args) if request.method == 'GET' else request.json
+        if request.method in ('POST', 'PUT', 'PATHC'):
+            payload = dict(request.form)
+            if not payload:
+                payload = request.json
+        else:
+            payload = dict(request.args)
+        
         data = {
             'datetime': datetime.now(),
             'ip': request.remote_addr,
