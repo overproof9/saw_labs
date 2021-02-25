@@ -49,8 +49,8 @@ def register_user(form):
         return {'status': False, 'errors': errors}
 
     password = generate_password_hash(data['password1'])
-    query = """INSERT INTO public."user" (username, email, passwd) VALUES """
-    tail = f' (\'{data["username"]}\', \'{data["email"]}\', \'{password}\');'
+    query = """INSERT INTO public."user" (username, email, passwd, role) VALUES """
+    tail = f' (\'{data["username"]}\', \'{data["email"]}\', \'{password}\', 1);'
     query += tail
     res = db.engine.execute(query)
     return {'status': True}
